@@ -14,6 +14,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -26,9 +29,15 @@ public class MainActivity extends AppCompatActivity {
         TextView title = findViewById(R.id.titleText);
         Button submit = findViewById(R.id.button);
         TextView forgotPassword = findViewById(R.id.forgetPasswordTxtView);
+        TextView carsTxt = findViewById(R.id.carsText);
 
+        List<String> cars = new ArrayList<>();
+        cars.add("ford");
+        cars.add("tesla");
 
         Editable emailStr = email.getText();
+        var value = email.getHint().charAt(2);
+        System.out.println("test: "+value);
         String emailHintStr = email.getHint().toString();
         String passwordStr = password.getText().toString();
         String titleStr = title.getText().toString();
@@ -45,19 +54,22 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("editable = " + editable);
                 if (editable.length() < 6) {
                     email.setError("must be greater 5 letters");
+                    submit.setEnabled(false);
+                } else {
+                    submit.setEnabled(true); // jetpack compose
                 }
             }
 
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 System.out.println("MainActivity.beforeTextChanged");
-                System.out.println("charSequence = " + charSequence + ", i = " + i + ", i1 = " + i1 + ", i2 = " + i2);
+                System.out.println("s = " + s + ", start = " + start + ", count = " + count + ", after = " + after);
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 System.out.println("MainActivity.onTextChanged");
-                System.out.println("charSequence = " + charSequence + ", i = " + i + ", i1 = " + i1 + ", i2 = " + i2);
+                System.out.println("s = " + s + ", start = " + start + ", before = " + before + ", count = " + count);
             }
         });
 
@@ -82,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
                 System.out.println(emailStr);
                 System.out.println(passwordStr);
+
+                carsTxt.setText(cars.toString());
+
             }
         });
 
