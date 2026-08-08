@@ -15,5 +15,6 @@ public class ConstraintLayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_constraint_layout);
 
+
     }
 }
