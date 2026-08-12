@@ -34,6 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    someFun("android")
 }
 
 dependencies {
@@ -46,3 +47,12 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
+
+tasks.register("helloAndroid") {
+    doLast {
+        println("heyy")
+        someFun("task")
+    }
+}
+
+fun someFun(callSite: String) { println("somefun: $callSite") }
