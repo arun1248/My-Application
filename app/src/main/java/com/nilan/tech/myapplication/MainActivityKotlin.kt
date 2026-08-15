@@ -1,14 +1,20 @@
 package com.nilan.tech.myapplication
 
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.IntentSenderRequest
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.databinding.DataBindingUtil
+import com.nilan.tech.myapplication.databinding.ActivityMainKotlinBinding
 
 private const val TAG = "MainActivityKotlin"
 
@@ -20,7 +26,9 @@ class MainActivityKotlin : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_kotlin)
+//        setContentView(R.layout.activity_main_kotlin)
+
+        val binding: ActivityMainKotlinBinding = DataBindingUtil.setContentView(this, R.layout.activity_main_kotlin)
 
         result = findViewById(R.id.resTxt)
         result.text = "result is success"
@@ -44,6 +52,36 @@ class MainActivityKotlin : AppCompatActivity(), View.OnClickListener {
 
         btnBye.setOnClickListener { view -> // optional to have parameter view
             Log.d(TAG, "onClick: Bye lambda without parenthesis")
+        }
+
+        binding.textField.addTextChangedListener(object: TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(
+                p0: CharSequence?,
+                p1: Int,
+                p2: Int,
+                p3: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(
+                p0: CharSequence?,
+                p1: Int,
+                p2: Int,
+                p3: Int
+            ) {
+
+            }
+
+        })
+
+        binding.buttonAction.setOnClickListener {
+            val intent: Intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
     }

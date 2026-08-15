@@ -35,6 +35,11 @@ android {
         jvmTarget = "11"
     }
     someFun("android")
+
+    buildFeatures {
+        dataBinding = true
+    }
+
 }
 
 dependencies {
