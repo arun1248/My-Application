@@ -4,6 +4,17 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2026-08-18T12:46:49.302920800Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=47fe11f0" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
+      </SelectionState>
+      <SelectionState runConfigName="MainActivityKotlin">
+        <option name="selectionMode" value="DROPDOWN" />
         <DropdownSelection timestamp="2026-06-01T15:01:32.301337300Z">
           <Target type="DEFAULT_BOOT">
             <handle>

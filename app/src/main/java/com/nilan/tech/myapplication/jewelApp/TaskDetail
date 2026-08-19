@@ -1,0 +1,105 @@
+
+Task: “Simple Jewel Bill” App
+Goal:
+
+Show a list of jewelry items in a RecyclerView.
+
+When the user taps an item, open another screen (Activity) that shows a simple bill for that single item.
+
+That’s it:
+1 list screen → 1 bill screen using Intent.
+
+Screens
+1. MainActivity – Item Lists
+One RecyclerView.
+
+Each row shows:
+
+Jewelry name (e.g., “Gold Ring”)
+
+Price (e.g., “₹25,000”)
+
+On item click:
+
+Open BillActivity using an Intent.
+
+Pass:
+
+name
+
+price
+
+Example data:
+
+kotlin
+data class JewelItem(
+    val name: String,
+    val price: String
+)
+
+val jewelList = listOf(
+    JewelItem("Gold Ring", "25000"),
+    JewelItem("Pearl Necklace", "45000"),
+    JewelItem("Diamond Earrings", "80000")
+)
+2. BillActivity – Simple Bill
+Receives name and price from Intent.
+
+Shows:
+
+Title: “Bill”
+
+Item name
+
+Price
+
+A fixed tax (for simplicity, e.g., 10%)
+
+Total = price + tax
+
+Example calculation (in code):
+
+kotlin
+val priceValue = priceString.toLong()
+val tax = priceValue * 10 / 100
+val total = priceValue + tax
+Display:
+
+Item: Gold Ring
+
+Price: ₹25,000
+
+Tax (10%): ₹2,500
+
+Total: ₹27,500
+
+No cart, no quantity, just one item → one bill.
+
+How Intent Is Used
+From MainActivity:
+
+kotlin
+val intent = Intent(this, BillActivity::class.java).apply {
+    putExtra("EXTRA_NAME", item.name)
+    putExtra("EXTRA_PRICE", item.price)
+}
+startActivity(intent)
+In BillActivity:
+
+kotlin
+val name = intent.getStringExtra("EXTRA_NAME") ?: ""
+val priceString = intent.getStringExtra("EXTRA_PRICE") ?: "0"
+Then compute tax and total and show in TextViews.
+
+What You Practice
+Creating a simple RecyclerView with a list.
+
+Handling item click in RecyclerView.
+
+Starting a new Activity with an Intent.
+
+Passing simple data (String) via Intent.putExtra.
+
+Doing a basic calculation (tax & total) and displaying it.
+
+If you tell me your current level (e.g., “I know basic Kotlin but not RecyclerView”), I can give you exact step-by-step code for Adapter, ViewHolder, and both Activities.
