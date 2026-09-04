@@ -1,4 +1,4 @@
-package com.nilan.tech.myapplication
+package com.nilan.tech.myapplication.navigation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.nilan.tech.myapplication.navigation.AboutFragmentDirections
 import com.nilan.tech.myapplication.databinding.FragmentAboutBinding
-import com.nilan.tech.myapplication.databinding.FragmentHomeBinding
 
 class AboutFragment : Fragment() {
 
@@ -21,7 +21,12 @@ class AboutFragment : Fragment() {
 
         binding.aboutTxt.setOnClickListener {
 //            findNavController().navigate(R.id.action_aboutFragment_to_settingsFragment)
-            findNavController().navigate(AboutFragmentDirections.actionAboutFragmentToSettingsFragment("Dev Mode", true))
+            findNavController().navigate(
+                AboutFragmentDirections.actionAboutFragmentToSettingsFragment(
+                    settingName = UserSettings("Dev Mode"),
+                    settingEnabled = true
+                )
+            )
         }
 
         return binding.root

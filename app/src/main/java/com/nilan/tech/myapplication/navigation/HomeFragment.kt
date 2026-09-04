@@ -1,10 +1,10 @@
-package com.nilan.tech.myapplication
+package com.nilan.tech.myapplication.navigation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.nilan.tech.myapplication.databinding.FragmentHomeBinding
 
@@ -26,7 +26,8 @@ class HomeFragment : Fragment() {
         }
 
         binding.settingsBtn.setOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSettingsFragment("dark mode", true))
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSettingsFragment(
+                UserSettings("dark mode"), true))
 //            findNavController().navigate(R.id.action_homeFragment_to_settingsFragment)
         }
 
