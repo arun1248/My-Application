@@ -1,14 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".navigation.ProductsHomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        >
 
-</FrameLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="8dp"
+            android:id="@+id/cartCard"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cart"
+                android:layout_margin="8dp"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/cartCard"
+            app:layout_constraintTop_toTopOf="@id/cartCard"
+            app:layout_constraintEnd_toStartOf="@id/aboutImg"
+            android:layout_marginHorizontal="8dp"
+            app:cardCornerRadius="24dp"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_home"
+                android:drawablePadding="6dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingVertical="6dp"
+                android:drawableEnd="@drawable/ic_cart"
+                android:hint="Search"
+                android:background="@null"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_about"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cartCard"
+            android:id="@+id/aboutImg"
+            android:layout_marginEnd="16dp"
+            android:padding="8dp"
+            android:background="@drawable/corner_bg"
+            />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toBottomOf="@id/cartCard"
+            app:layout_constraintStart_toStartOf="@id/cartCard"
+            app:layout_constraintEnd_toEndOf="@id/aboutImg"
+            android:layout_marginTop="24dp"
+            android:id="@+id/viewpagerBanner"
+            />
+
+        <com.google.android.material.tabs.TabLayout
+            app:layout_constraintTop_toBottomOf="@id/viewpagerBanner"
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/cartCard"
+            app:layout_constraintTop_toBottomOf="@id/tabLayout"
+            android:text="Categories"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:id="@+id/categoriesTitle"
+            android:textSize="24sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoriesRV"
+            app:layout_constraintTop_toBottomOf="@id/categoriesTitle"
+            app:layout_constraintStart_toStartOf="@id/cartCard"
+            app:layout_constraintEnd_toEndOf="@id/aboutImg"
+            android:layout_marginTop="12dp"
+            app:spanCount="2"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/category_item"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
