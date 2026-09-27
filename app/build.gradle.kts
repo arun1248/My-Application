@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+//    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.navigation)
     alias(libs.plugins.kotlin.parcelize)
 }
@@ -29,13 +29,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+//    kotlinOptions {
+//        jvmTarget = "11"
+//    }
     someFun("android")
 
     buildFeatures {
@@ -46,6 +46,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.kotlin.parcelize.runtime)
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
