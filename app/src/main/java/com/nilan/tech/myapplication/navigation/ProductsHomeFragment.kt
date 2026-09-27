@@ -69,13 +69,7 @@ class ProductsHomeFragment : Fragment() { // https://dribbble.com/shots/25304102
         binding.flashDealsRV.layoutManager =
             GridLayoutManager(requireContext(), 1, RecyclerView.HORIZONTAL, false)
         binding.flashDealsRV.adapter = FlashDealRecyclerAdapter(
-            listOf(
-                Product("Earbuds", R.drawable.earbuds),
-                Product("Glass", R.drawable.glass),
-                Product("Cream", R.drawable.cream),
-                Product("Sent", R.drawable.scent),
-                Product("Shoe", R.drawable.shoe),
-            )
+            (requireActivity() as BottomNavActivity).list
         )
 
     }
@@ -88,9 +82,7 @@ class ProductsHomeFragment : Fragment() { // https://dribbble.com/shots/25304102
         dotsLayout.removeAllViews()
 
         for (i in 0 until itemCount) {
-
             val dot = View(requireContext())
-
             val size = 12.dpToPx()
 
             val params = LinearLayout.LayoutParams(size, size)
@@ -108,7 +100,6 @@ class ProductsHomeFragment : Fragment() { // https://dribbble.com/shots/25304102
             )
 
             dot.isSelected = i == binding.viewpagerBanner.currentItem
-
             dotsLayout.addView(dot)
         }
     }

@@ -1,5 +1,6 @@
 package com.nilan.tech.myapplication.navigation
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import coil3.load
 import com.nilan.tech.myapplication.R
 import com.nilan.tech.myapplication.databinding.FlashDealItemBinding
+
+private const val TAG = "FlashDealRecyclerAdapte"
 
 class FlashDealRecyclerAdapter(
     private val items: List<Product>
@@ -33,10 +36,12 @@ class FlashDealRecyclerAdapter(
         holder: ViewHolder,
         position: Int
     ) {
+        holder.binding.product = items[position]
         holder.binding.catText.text = items[position].name
         holder.binding.catImg.load(items[position].image)
 
         holder.binding.heartImg.setOnClickListener {
+            Log.d(TAG, "onBindViewHolder: setOnClickListener")
             items[position].isFavorite = !items[position].isFavorite
             notifyItemChanged(position)
         }

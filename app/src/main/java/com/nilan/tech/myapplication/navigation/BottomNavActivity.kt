@@ -13,6 +13,14 @@ import com.nilan.tech.myapplication.R
 import com.nilan.tech.myapplication.databinding.ActivityBottomNavBinding
 
 class BottomNavActivity : AppCompatActivity() {
+    val list = listOf(
+        Product("Earbuds", R.drawable.earbuds),
+        Product("Glass", R.drawable.glass),
+        Product("Cream", R.drawable.cream),
+        Product("Sent", R.drawable.scent),
+        Product("Shoe", R.drawable.shoe),
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
